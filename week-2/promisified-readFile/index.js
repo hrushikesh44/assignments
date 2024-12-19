@@ -12,7 +12,7 @@ function readFile(filePath,cb) {
 }
 
 async function main() {
-  await readFile("c.txt");
+  await readFile("a.txt");
   console.log("Done reading file");
 }
 
