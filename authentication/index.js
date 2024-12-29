@@ -113,4 +113,20 @@ app.post("/sign-in", function (req, res) {
 
 });
 
+app.get("/me", function(req, res){
+    const token = req.headers.token;
+    const user = users.find(user => user.token == token);
+
+    if(user){
+        res.json({
+            username : user.username, 
+            password : user.password
+        })
+    }else{
+        res.status(404).json({
+            message : "invalid token"
+        })
+    }
+})
+
 app.listen(3000);
