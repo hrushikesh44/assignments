@@ -47,7 +47,27 @@ app.post("/sign-in", function (req, res) {
 
 });
 
-app.get("/me", function(req, res){
+function auth(req, res, next){
+    const token = req.headers.token;
+
+    if(token){
+        jwt.verify(token, JWT_SECRET, function(err, decoded){
+            if(err){
+                res.status(404).json({
+                    msg: "Unauthorised"
+                });
+            }else{
+                next();
+            }
+        })
+    }else{
+        res.status(404).json({
+            msg : "Token not available "
+        })
+    }
+}
+
+app.get("/me", auth, function(req, res){
     const token = req.headers.token;
     const userDetails = jwt.verify(token, JWT_SECRET);
 
