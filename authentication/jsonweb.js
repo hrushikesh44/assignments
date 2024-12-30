@@ -19,7 +19,7 @@ app.post("/sign-up", function (req, res) {
     });
 
     res.json({
-        message: "you've signed in successfully",
+        message: "you've signed up successfully",
         
     });
 });
@@ -57,6 +57,7 @@ function auth(req, res, next){
                     msg: "Unauthorised"
                 });
             }else{
+                req.user = decoded;
                 next();
             }
         })
@@ -68,22 +69,11 @@ function auth(req, res, next){
 }
 
 app.get("/me", auth, function(req, res){
-    const token = req.headers.token;
-    const userDetails = jwt.verify(token, JWT_SECRET);
+    const user = req.user
 
-    const username = userDetails.username;
-    const user = users.find(user => user.username == username);
-
-    if(user){
-        res.json({
-            username : user.username, 
-            password : user.password
-        })
-    }else{
-        res.status(404).json({
-            message : "Unauthorised"
-        })
-    }
+    res.json({
+        username : user.username
+    })
 })
 
 app.listen(3000);
