@@ -7,7 +7,9 @@ app.use(express.json());
 
 let users = [];
 
-
+app.get("/", function(req, res){
+    res.sendFile( "/home/hrushikesh/assignments/authentication/public/index.html")
+})
 
 app.post("/sign-up", function (req, res) {
     const username = req.body.username;
