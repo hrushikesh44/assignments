@@ -40,7 +40,7 @@ const style = { width: 200,display:"flex", borderRadius: 10, borderWidth: 1, bor
 function PostComponent(){
   return(
     <div style={{maxWidth: 500, borderRadius: 3 , background: "white",
-       borderRadius: 10, padding: 10
+       borderRadius: 10, padding: 25
     }}>
       <div  style={style}>
         <div>
@@ -67,6 +67,7 @@ function ProfileCard(){
   return(
     <>
       <div style={{background: "white", borderRadius: 15, margin: 15, minWidth: 400, minHeight: 300,
+      padding: 25
       }}>
         <div style={{display:"flex"}}>
           <div>
