@@ -1,94 +1,64 @@
+import { useEffect, useState } from "react";
+import { PostComponent } from "./post";
+import { ProfileCard } from "./profilecard";
 
 function App() {
+  const [posts, setPosts] = useState([])
+  const [count, setCount] = useState(0)
+
+  const postComponents = posts.map(post =>  <PostComponent
+  name={post.name}
+  subtitle={post.subtitle}
+  image={post.image}
+  time={post.time}
+  description={post.description}
+  />
+  )
+
+//   useEffect(function(){
+//       let clock = setinterval(function(){
+//       setCount(function(count){
+//         return count + 1;
+//       })
+//     }, 2000)
+
+//     return function(){
+//       clearInterval(clock)
+//     }
+// }, [])
+
+
+  function addPost(){
+    setPosts([...posts, {
+      name: "hrushikesh",
+      image:"https://media.istockphoto.com/id/956765438/photo/american-pit-bull-terrier.jpg?s=612x612&w=0&k=20&c=Z_iBdcku8YzDbtwtAvl7FfwemSFb4oa_76RIkPzIZ-A=",
+      subtitle:"12k followers",
+      time: "3h ago",
+      description: "Want to know about dogs... Join the community of 2399+ dog parents"
+      }])
+
+      setCount(count + 1);
+      
+  }
+
 
   return (
-    <div style={{background: "#dfe6e9", height: "100vh", margin: 0,
-       display: "flex",
-       justifyContent: "space-evenly"
-      }}>
-        <div style={{display: "flex", marginTop: 25}}>
-          <div>
-            <ProfileCard/>
-          </div>
-          <div style={{marginTop: 10 }}>
-              <div>
-                <PostComponent/>
-              </div>
-              <br/>
-              <div>
-                <PostComponent/>
-              </div>
-              <br/>
-              <div>
-                <PostComponent/>
-              </div>
-              <br/>
-              <div>
-                <PostComponent/>
-              </div>
-          </div>
-          <div>
-            <ProfileCard/>
-          </div>
-        </div>
-    </div>
-  )
-}
-
-const style = { width: 200,display:"flex", borderRadius: 10, borderWidth: 1, borderColor: "gray",  }
-
-function PostComponent(){
-  return(
-    <div style={{maxWidth: 500, borderRadius: 3 , background: "white",
-       borderRadius: 10, padding: 25
-    }}>
-      <div  style={style}>
+    <div style={{background: "#dfe6e9", height: "100vh", }}>
+      <div>
+        <button onClick={addPost} style={{fontSize: 34, margin: 25 }}>Add post</button>
+        <img src="https://media.gettyimages.com/id/1270018740/photo/bell-drawing-you-have-a-new-notification.jpg?s=612x612&w=0&k=20&c=jQXUBS2xU-ZsTkm5eYodk0oCRpXNjBDUAKgKxCkZzCY="
+        style={{width: 40}}/>
+        <span style={{background: "red", fontSize: 22, borderRadius: 30, color: "white"}}>{count}</span> 
+      </div>
+      <div style={{display: "flex", justifyContent: "center" }}>
         <div>
-          <img src={"https://pluspng.com/img-png/pitbull-png-junior-the-pitbull-also-known-as-junior-is-one-of-cesar-millan-s-dogs-that-appears-in-the-dog-whisperer-with-cesar-millan-he-is-the-successor-of-daddy-the-300.png"} 
-          style={{width: 70,
-            height: 60,
-            borderRadius: 20
-          }}/>
+          {postComponents}
         </div>
-        <div style={{fontSize: 18, }}>
-          <b>Hrushikesh</b>
-          <div>12000 followers</div>
-          <div>13h ago</div>
-        </div>
-      </div>
-      <div style={{fontSize: 24}}>
-        Want to know about pitbulls.. join the community of around 10,000 dog parents
       </div>
     </div>
   )
 }
 
-function ProfileCard(){
-  return(
-    <>
-      <div style={{background: "white", borderRadius: 15, margin: 15, minWidth: 400, minHeight: 300,
-      padding: 25
-      }}>
-        <div style={{display:"flex"}}>
-          <div>
-            <img src="https://pluspng.com/img-png/pitbull-png-junior-the-pitbull-also-known-as-junior-is-one-of-cesar-millan-s-dogs-that-appears-in-the-dog-whisperer-with-cesar-millan-he-is-the-successor-of-daddy-the-300.png"
-            style={{width: 200,
-              height: 150, 
-              borderRadius: 100,
-              }}
-            />
-          </div>
-          <div style={{fontSize: 20}}>
-            <b>Hrushikesh Modupalli</b>
-          </div>
-        </div>
-        <div style={{fontSize: 24}}>
-        I like to talk about dogs
-        </div>
-      </div>
-    </>
-  )
-}
 
 
 
