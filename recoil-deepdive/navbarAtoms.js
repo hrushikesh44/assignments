@@ -1,4 +1,5 @@
-import { atom, selector } from "recoil";
+import axios from "axios";
+import { atom, atomFamily, selector, selectorFamily } from "recoil";
 
 export const networkAtom = atom({
   key: "networkAtom",
@@ -34,4 +35,20 @@ export const totalNotificationSelector = selector({
       messageAtomCount
     );
   },
+});
+
+export const todosAtomFamily = atomFamily({
+  key: "todoFamily",
+  default: selectorFamily({
+    key: "todoSelectorFamily",
+    get:
+      (id) =>
+      async ({ get }) => {
+        let res = await fetch(
+          `https://jsonplaceholder.typicode.com/todos/${id}`
+        );
+        const json = res.json();
+        return json;
+      },
+  }),
 });

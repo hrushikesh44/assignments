@@ -1,14 +1,16 @@
 import { useState } from 'react'
-import { RecoilRoot, useRecoilValue } from 'recoil'
+import { RecoilRoot, useRecoilState, useRecoilValue } from 'recoil'
 import './App.css'
-import { jobsAtom, messageAtom, networkAtom, notificationAtom, totalNotificationSelector } from '../navbarAtoms'
+import { jobsAtom, messageAtom, networkAtom, notificationAtom, todosAtomFamily, totalNotificationSelector } from '../navbarAtoms'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <RecoilRoot>
        <Navbar />
+       <Todos id ={1} />
+       <Todos id ={2} />
+       <Todos id ={3} />
     </RecoilRoot>
   )
 }
@@ -30,6 +32,19 @@ function Navbar() {
   
   <button>Me {allNotificationCount} </button>
   </>
+}
+
+function Todos({id}) {
+  const [todo, setTodo] = useRecoilState(todosAtomFamily(id));
+
+
+  return <>
+    <div>
+      {todo.title}
+      <br/>
+      {todo.description}
+    </div>
+    </>
 }
 
 export default App
