@@ -44,11 +44,10 @@ export const todosAtomFamily = atomFamily({
     get:
       (id) =>
       async ({ get }) => {
-        let res = await fetch(
+        let res = await axios.get(
           `https://jsonplaceholder.typicode.com/todos/${id}`
         );
-        const json = res.json();
-        return json;
+        return res.data;
       },
   }),
 });
