@@ -1,10 +1,11 @@
 import './App.css'
 import { AgeVerify } from './components/AgeVerify'
+import { Webinar } from './components/Webinar'
 
 function App() {
 
   return <>
-    <AgeVerify />
+    <Webinar />
   </>
 }
 

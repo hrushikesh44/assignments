@@ -2,7 +2,7 @@ import { Button } from "./Button";
 import { Input } from "./Input";
 
 export function AgeVerify(){
-    return(
+    return<div>
       <div className='bg-blue-700 h-screen w-screen  '>
       <div className='flex justify-center pt-[150px] '>
         <img src="https://img.icons8.com/?size=100&id=20308&format=png&color=000000" alt="monitor"
@@ -22,5 +22,5 @@ export function AgeVerify(){
       <Input />
       <Button />
     </div>
-    )
-  }
+  </div>
+ }
