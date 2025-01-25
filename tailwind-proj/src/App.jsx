@@ -1,7 +1,8 @@
 import './App.css'
 import { AddMeeting } from './icons/Add'
 import { Schedule } from './icons/Schedule'
-import { Profilecard } from './Profilecard'
+import { Profilecard } from './components/Profilecard'
+import { SidebarContent } from './components/SidebarContent'
 
 function App() {
 
@@ -18,13 +19,13 @@ function App() {
 function Sidebar(){
   
   return <div className='bg-slate-200 h-screen w-[25vw] hidden lg:block'>
-
+    <SidebarContent />
   </div>
 }
 
 function MobileTopbar(){
-  return <div className='bg-slate-200 h-[10vh] w-screen block md:hidden '>
-
+  return <div className='bg-red-200 h-[10vh] w-screen block md:hidden mt-8 rounded-2xl sticky top-8 opacity-25'>
+    
   </div>
 }
 
