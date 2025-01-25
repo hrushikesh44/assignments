@@ -24,7 +24,7 @@ function Sidebar(){
 }
 
 function MobileTopbar(){
-  return <div className='bg-red-200 h-[10vh] w-screen block md:hidden mt-8 rounded-2xl sticky top-8 opacity-25'>
+  return <div className='bg-red-200 h-[10vh] w-screen block md:hidden mt-8 rounded-2xl sticky top-8 left-5 right-5 opacity-25'>
     
   </div>
 }
